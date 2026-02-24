@@ -1,6 +1,17 @@
 import { TrendingUp, Clock, CreditCard } from "lucide-react";
 
-export const earningCards = [
+export type EarningCardColor = "emerald" | "amber" | "blue";
+
+export interface EarningCard {
+  title: string;
+  value: string;
+  color: EarningCardColor;
+  percent: string;
+  percentColor: string;
+  icon: any;
+}
+
+export const earningCards: EarningCard[] = [
   {
     title: "Total Earned (YTD)",
     value: "$48,250.00",
@@ -15,7 +26,7 @@ export const earningCards = [
     color: "amber",
     percent: "Scheduled for Nov 15, 2025",
     icon: Clock,
-    percentColor: "text-white", // white for 2nd card
+    percentColor: "text-white",
   },
   {
     title: "Last Payout",
@@ -23,9 +34,10 @@ export const earningCards = [
     color: "blue",
     percent: "Processed on Oct 31, 2025",
     icon: CreditCard,
-    percentColor: "text-white", // white for 3rd card
+    percentColor: "text-white",
   },
 ];
+
 export const transactions = [
   {
     date: "Nov 15, 2025",
