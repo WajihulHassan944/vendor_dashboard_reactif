@@ -76,8 +76,27 @@ const variantColors = {
   default: "bg-slate-100 text-slate-500",
 };
 
+const variantStyles = {
+  info: {
+    bg: "bg-blue-100",
+    icon: "text-blue-700",
+  },
+  success: {
+    bg: "bg-emerald-100",
+    icon: "text-emerald-700",
+  },
+  warning: {
+    bg: "bg-amber-100",
+    icon: "text-amber-700",
+  },
+  default: {
+    bg: "bg-slate-100",
+    icon: "text-slate-600",
+  },
+};
 const NotificationCard = ({ notification }: { notification: Notification }) => {
-  const bg = variantColors[notification.variant || "default"];
+  const { bg, icon } =
+  variantStyles[notification.variant || "default"];
 
   return (
     <div
@@ -87,16 +106,16 @@ const NotificationCard = ({ notification }: { notification: Notification }) => {
     >
       <div className="flex gap-4">
         {/* Icon */}
-        <div className={`w-10 h-10 flex items-center justify-center rounded-full ${bg}`}>
-          {/* Bell icon placeholder (darkened) */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5 text-white/90"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
+       <div
+  className={`w-10 h-10 flex items-center justify-center rounded-full ${bg}`}
+>
+  <svg
+    className={`w-5 h-5 ${icon}`}
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -151,15 +170,52 @@ const NotificationCard = ({ notification }: { notification: Notification }) => {
 };
 
 const NotificationsPage = () => {
+  const [checked, setChecked] = React.useState(false);
+
+  const toggleCheckbox = () => setChecked(!checked);
   return (
-    <div className="flex flex-col gap-6 pb-4">
+    <div className="relative flex flex-col gap-6 pb-4">
       {/* Header */}
       <div className="flex justify-between items-center gap-4">
-        <h1 className="text-2xl font-semibold text-white">Notifications</h1>
+      
+      {/* Title with icon */}
+     <h1 className="flex items-center gap-3 text-2xl font-semibold text-white">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <path
+      d="M18.134 11C18.715 16.375 21 18 21 18H3C3 18 6 15.867 6 8.4C6 6.703 6.632 5.075 7.757 3.875C8.882 2.675 10.41 2 12 2C12.338 2 12.6713 2.03 13 2.09M13.73 21C13.5542 21.3031 13.3018 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21M19 8C19.7956 8 20.5587 7.68393 21.1213 7.12132C21.6839 6.55871 22 5.79565 22 5C22 4.20435 21.6839 3.44129 21.1213 2.87868C20.5587 2.31607 19.7956 2 19 2C18.2044 2 17.4413 2.31607 16.8787 2.87868C16.3161 3.44129 16 4.20435 16 5C16 5.79565 16.3161 6.55871 16.8787 7.12132C17.4413 7.68393 18.2044 8 19 8Z"
+      stroke="#FAFAFA"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+
+  Notifications
+
+  <span className="px-2.5 py-0.5 bg-indigo-400 rounded-full text-white text-xs font-medium tracking-wide">
+    New
+  </span>
+</h1>
+
+      {/* Right side: Checkbox + Mark all */}
+      <div className="flex items-center gap-3">
+        <input
+          type="checkbox"
+          className="w-4 h-4 accent-indigo-500 cursor-pointer"
+          checked={checked}
+          onChange={toggleCheckbox}
+        />
         <button className="text-sm font-semibold text-white hover:opacity-80">
           Mark all as read
         </button>
       </div>
+    </div>
 
       {/* Tabs */}
       <div className="flex gap-2 border-b border-slate-200">

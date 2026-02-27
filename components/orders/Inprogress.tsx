@@ -1,5 +1,6 @@
 import React from 'react'
 import { FiSend } from 'react-icons/fi'
+import { Label } from '../ui/label'
 
 const Inprogress = () => {
   return (
@@ -17,18 +18,28 @@ const Inprogress = () => {
                   </div>
       
                   {/* Dropdown */}
-                  <div className="flex gap-3">
-                    <select className="flex-1 bg-[#1e2230] border border-white/10 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-indigo-500">
-                      <option>Material Preparation</option>
-                      <option>Printing</option>
-                      <option>Installation</option>
-                    </select>
-      
-                    <button className="px-6 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm transition">
-                      Update
-                    </button>
-                  </div>
-      
+<div className="flex flex-col gap-2">
+  
+  {/* Label on Top */}
+  <Label className="text-sm font-semibold text-white">
+    Current Phase
+  </Label>
+
+  {/* Row: Select + Button */}
+  <div className="flex gap-3">
+    
+    <select className="flex-1 h-10 bg-[#1e2230] border border-white/10 rounded-lg px-4 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
+      <option>Material Preparation</option>
+      <option>Printing</option>
+      <option>Installation</option>
+    </select>
+
+    <button className="h-10 px-6 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm transition">
+      Update
+    </button>
+
+  </div>
+</div>
                   {/* Checklist */}
                   <div className="bg-[#1e2230] border border-white/10 rounded-xl p-5 flex flex-col gap-4">
                     <div className="text-sm font-semibold text-white/70">

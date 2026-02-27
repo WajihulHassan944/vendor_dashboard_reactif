@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 interface HeaderProps {
   title: string;
@@ -17,7 +17,7 @@ const Header = ({ title, subtitle, action }: HeaderProps) => {
             {title}
           </h1>
           {subtitle && (
-            <p className="text-neutral-400 text-sm sm:text-base font-medium font-hk mt-2">
+            <p className="text-[#FAFAFA99] text-[19px]  font-medium font-hk mt-2">
               {subtitle}
             </p>
           )}

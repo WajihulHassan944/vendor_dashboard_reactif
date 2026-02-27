@@ -1,6 +1,7 @@
 "use client";
 
 import { AiOutlinePaperClip } from "react-icons/ai";
+import { BsEmojiSmile } from "react-icons/bs";
 import { FiSend } from "react-icons/fi";
 
 export default function ChatInput() {
@@ -23,6 +24,14 @@ export default function ChatInput() {
           rows={1}
           className="flex-1 bg-transparent text-sm text-black placeholder:text-gray-400 focus:outline-none resize-none py-2"
         />
+
+        {/* Emoji Button */}
+      <button
+  type="button"
+  className="p-2 rounded-lg hover:bg-slate-200 transition flex items-center justify-center text-xl"
+>
+  <BsEmojiSmile size={18} className="text-slate-700" />
+</button>
 
         {/* Send Button */}
         <button

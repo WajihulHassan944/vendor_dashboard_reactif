@@ -1,72 +1,72 @@
 "use client";
 
 import * as React from "react";
-import { Search, Bell, Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Bell, Menu, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { usePathname } from "next/navigation"; // <-- Import this
 
 interface NavbarProps {
   isSidebarOpen: boolean;
   setSidebarOpen: (open: boolean) => void;
 }
 
-const SearchInput = React.forwardRef<
-  HTMLInputElement,
-  React.ComponentProps<"input">
->(({ className, ...props }, ref) => (
-  <div className="relative w-full max-w-xs md:max-w-sm">
-    <Search
-      className="absolute left-4 top-1/2 -translate-y-1/2 text-indigo-400"
-      size={18}
-    />
-    <input
-      ref={ref}
-      className={cn(
-        "w-full h-11 md:h-[48px] rounded-xl border border-indigo-400 bg-white/5 backdrop-blur-md pl-11 pr-4 text-sm md:text-base text-white placeholder:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-purple-400/40 focus:border-purple-400 transition-all",
-        className
-      )}
-      {...props}
-    />
+const SearchBox = () => (
+  <div className="mr-3 w-64 relative">
+    <div className="flex items-center gap-2.5 px-4 py-2 rounded-md outline outline-[0.50px] outline-offset-[-0.50px] outline-indigo-400 focus-within:ring-1 focus-within:ring-indigo-400">
+      
+      {/* React Search Icon */}
+      <div className="w-6 h-6 flex items-center justify-center">
+        <Search size={20} className="text-indigo-400" />
+      </div>
+
+      {/* Input field */}
+      <input
+        type="text"
+        placeholder="Search"
+        className="flex-1 bg-transparent text-indigo-400/60 placeholder:text-indigo-400/60 text-xl font-medium font-['HK_Grotesk'] focus:outline-none"
+      />
+    </div>
   </div>
-));
+);
 
 export default function Navbar({ isSidebarOpen, setSidebarOpen }: NavbarProps) {
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
 
+  const pathname = usePathname(); // <-- Get current path
+
   return (
-    <nav className="w-full  z-40 backdrop-blur-xl  border-b border-indigo-400">
-      <div className="flex items-center justify-between px-4 md:px-8 h-[70px] md:h-[88px]">
+    <nav className="w-full z-40 backdrop-blur-xl border-b border-indigo-400">
+      <div className="flex items-center justify-between px-4 md:px-8 h-[70px] md:h-[88px] gap-4">
+        
+        {/* LEFT: Conditional Title */}
+        {pathname === "/support" && (
+          <div className="text-white text-xl font-semibold">
+            Admin Support
+          </div>
+        )}
 
-        {/* Left Section */}
-        <div className="flex items-center gap-3">
+        {/* RIGHT: Remaining navbar items */}
+        <div className="flex items-center gap-4 ml-auto">
+          
+          {/* Search */}
+        {pathname !== "/support" && (
+          <div className="hidden sm:block">
+            <SearchBox />
+          </div>)}
 
-          {/* Hamburger */}
+          {/* Mobile Search (centered) */}
+          <div className="sm:hidden flex-1 mx-3">
+            <SearchBox />
+          </div>
+
+          {/* Hamburger for mobile */}
           <button
             onClick={() => setSidebarOpen(!isSidebarOpen)}
             className="md:hidden p-2 rounded-lg bg-white/5 border border-indigo-400 hover:bg-indigo-400 transition"
           >
-            {isSidebarOpen ? <X size={20}  /> : <Menu size={20} color="white" />}
+            {isSidebarOpen ? <X size={20} /> : <Menu size={20} color="white" />}
           </button>
-
-          {/* Search */}
-          <div className="hidden sm:block">
-            <SearchInput placeholder="Search here..." />
-          </div>
-        </div>
-
-        {/* Mobile Search (centered clean look) */}
-        <div className="sm:hidden flex-1 mx-3">
-          <SearchInput placeholder="Search..." />
-        </div>
-
-        {/* Right Section */}
-        <div className="flex items-center gap-3 md:gap-5">
-
-          {/* Desktop Home Button */}
-          {/* <Button className="hidden md:flex rounded-full bg-gray-200 text-black hover:bg-white font-medium h-10 px-6 shadow-sm transition">
-            Home Page
-          </Button> */}
 
           {/* Notification */}
           <div className="relative cursor-pointer p-2 rounded-full border border-indigo-400 bg-white/5 hover:bg-indigo-400 transition">
@@ -79,7 +79,7 @@ export default function Navbar({ isSidebarOpen, setSidebarOpen }: NavbarProps) {
             className="cursor-pointer"
             onClick={() => setDropdownOpen(!dropdownOpen)}
           >
-            <Avatar className="h-9 w-9 md:h-10 md:w-10 ">
+            <Avatar className="h-9 w-9 md:h-10 md:w-10">
               <AvatarImage src="https://github.com/shadcn.png" alt="User" />
               <AvatarFallback>UF</AvatarFallback>
             </Avatar>
@@ -88,7 +88,6 @@ export default function Navbar({ isSidebarOpen, setSidebarOpen }: NavbarProps) {
           {/* Mobile Dropdown */}
           {dropdownOpen && (
             <div className="absolute right-4 top-[75px] md:hidden w-56 bg-neutral-900 border border-indigo-400 rounded-xl shadow-2xl p-4 flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200">
-              
               <Button className="rounded-full bg-white text-black hover:bg-gray-200 font-medium h-10 w-full">
                 Home Page
               </Button>
@@ -99,6 +98,7 @@ export default function Navbar({ isSidebarOpen, setSidebarOpen }: NavbarProps) {
               </div>
             </div>
           )}
+
         </div>
       </div>
     </nav>

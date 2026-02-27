@@ -1,6 +1,8 @@
 "use client";
 
+import OrderFilterBar from "@/components/orders/OrderFilterBar";
 import Header from "@/components/shared/Header";
+import { Download, RefreshCw } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 type OrderStatus = "pending" | "in-progress" | "ready" | "delay";
@@ -79,38 +81,28 @@ const AssignedOrders = () => {
       {/* ================= HEADER ================= */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
          <Header
-        title="Vender Dashboard"
-        subtitle="Welcome to your Vender portal"
+        title="Assigned Orders"
+        subtitle="Manage your active workload and track deliverables."
       />
 
-       <div className="flex gap-3">
-          <button className="h-10 px-4 rounded-md border border-neutral-600 text-neutral-200 text-sm font-medium hover:bg-neutral-800 transition">
-            Export
-          </button>
-          <button className="h-10 px-4 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 transition">
-            Refresh
-          </button>
-        </div>
+
+<div className="flex gap-3">
+  {/* Export Button */}
+  <button className="h-10 px-4 rounded-md border border-neutral-600 text-neutral-200 text-sm font-medium flex items-center gap-2 hover:bg-neutral-800 transition">
+    <Download className="w-4 h-4 text-neutral-200" />
+    Export
+  </button>
+
+  {/* Refresh Button */}
+  <button className="h-10 px-4 rounded-md bg-indigo-600 text-white text-sm font-medium flex items-center gap-2 hover:bg-indigo-500 transition">
+    <RefreshCw className="w-4 h-4 text-white" />
+    Refresh
+  </button>
+</div>
       </div>
 
       {/* ================= FILTER BAR ================= */}
-      <div className="bg-zinc-800 rounded-xl p-4 border border-[#FAFAFA1A] flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
-        <input
-          placeholder="Search by Order ID or Customer..."
-          className="w-full md:max-w-md px-4 py-2 rounded-md bg-neutral-800 border border-[#FAFAFA4D] text-sm text-neutral-200 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-        />
-
-        <div className="flex gap-3">
-          <select className="px-4 py-2 rounded-md bg-neutral-800 border border-[#FAFAFA4D] text-sm text-neutral-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-            <option>All Statuses</option>
-          </select>
-
-          <select className="px-4 py-2 rounded-md bg-neutral-800 border border-[#FAFAFA4D] text-sm text-neutral-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-            <option>This Week</option>
-          </select>
-        </div>
-      </div>
-
+    <OrderFilterBar />
       {/* ================= MOBILE CARDS ================= */}
       <div className="md:hidden space-y-4">
         {orders.map((order) => {

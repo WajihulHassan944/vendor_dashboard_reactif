@@ -9,6 +9,8 @@ import {
   FiCamera,
 } from "react-icons/fi";
 import { BsCheckCircleFill } from "react-icons/bs";
+import { Info, Send } from "lucide-react";
+import ProductionStagesCard from "@/components/cards/ProductionStagesCard";
 
 const Page: React.FC = () => {
   return (
@@ -135,15 +137,27 @@ const Page: React.FC = () => {
                 </div>
 
                 {/* Installation Note */}
-                <div className="bg-amber-400/10 border border-amber-400/30 rounded-xl p-4">
-                  <div className="text-xs font-semibold text-amber-300">
-                    Installation Note
-                  </div>
-                  <div className="text-xs text-amber-200/80">
-                    Client requested removal of rear badges prior to install.
-                    Badges to be saved.
-                  </div>
-                </div>
+           
+<div className="bg-amber-400/10 border border-amber-400/30 rounded-xl p-4 flex gap-2">
+  
+  {/* Icon */}
+  <div className="flex items-start">
+    <Info className="w-4 h-4 text-amber-300 mt-[2px] " />
+  </div>
+
+
+  {/* Content */}
+  <div className="flex flex-col gap-1">
+    <div className="text-sm font-semibold text-amber-300">
+      Installation Note
+    </div>
+    <div className="text-sm text-amber-200/80 leading-relaxed">
+      Client requested removal of rear badges prior to install.
+      Badges to be saved.
+    </div>
+  </div>
+
+</div>
               </div>
             </div>
           </div>
@@ -187,13 +201,20 @@ const Page: React.FC = () => {
               Customer Location
             </div>
 
-            <div className="h-40 rounded-xl bg-gradient-to-br from-[#202532] to-[#1a1f2a] border border-white/10 flex items-center justify-center" >
-            <div className="w-48 flex flex-col items-center gap-1">
+            <div className="relative h-45 rounded-xl bg-gradient-to-br from-[#202532] to-[#1a1f2a] border border-white/10 flex items-center justify-center" >
+            <div className=" w-48 flex flex-col items-center gap-1">
   <FiMapPin className="w-6 h-6 text-red-600" />
   <div className="text-base font-semibold text-neutral-50">Metro Ford Service Center</div>
   <div className="text-xs font-medium text-neutral-50/60 text-center">
     123 Auto Park Blvd, Austin, TX
   </div>
+
+  <button className="absolute bottom-2 right-2 px-3 py-1.5 hover:bg-neutral-700 transition rounded-md border border-white flex items-center gap-1.5">
+    <Send className="w-3.5 h-3.5 text-neutral-200" />
+    <span className="text-xs font-medium text-neutral-100">
+      Direction
+    </span>
+  </button>
 </div>
             </div>
 
@@ -217,34 +238,7 @@ const Page: React.FC = () => {
           </div>
 
           {/* Production Stages */}
-          <div className="bg-[#171a23]/80 backdrop-blur-xl rounded-2xl p-5 border border-white/10 shadow-xl shadow-black/30 space-y-4">
-            <div className="flex justify-between font-semibold">
-              <span>Production Stages</span>
-              <span className="text-white/40 text-sm">3/6 Done</span>
-            </div>
-
-            {[
-              "Artwork Approval",
-              "Material Prep & Print",
-              "Vehicle Surface Prep",
-              "Installation (5 Units)",
-              "Post-Heat & QA",
-              "Final Review",
-            ].map((stage, i) => (
-              <div key={i} className="flex items-center gap-2 text-sm">
-                <BsCheckCircleFill
-                  className={`${
-                    i < 3 ? "text-green-400" : "text-white/20"
-                  }`}
-                />
-                <span
-                  className={`${i < 3 ? "text-white" : "text-white/40"}`}
-                >
-                  {stage}
-                </span>
-              </div>
-            ))}
-          </div>
+         <ProductionStagesCard />
 
           {/* Estimated Payout */}
           <div className="bg-[#171a23]/80 backdrop-blur-xl rounded-2xl p-5 border border-white/10 shadow-xl shadow-black/30 space-y-3">

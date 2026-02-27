@@ -1,6 +1,7 @@
 "use client";
 
 import { transactions } from "@/constants/earnings"; 
+import { FileText } from "lucide-react";
 export default function Transactions() {
   return (
     <div className="py-1 bg-neutral-800 rounded-xl border border-neutral-50/10 overflow-hidden flex flex-col">
@@ -46,7 +47,7 @@ export default function Transactions() {
 
       {/* DESKTOP TABLE */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="w-full text-sm ">
+        <table className="w-full text-sm">
           <thead className="text-neutral-400 uppercase text-xs tracking-wide border-b border-neutral-50/10">
             <tr>
               <th className="px-6 py-3 text-left">Date</th>
@@ -54,6 +55,7 @@ export default function Transactions() {
               <th className="px-6 py-3 text-left">Reference</th>
               <th className="px-6 py-3 text-left">Status</th>
               <th className="px-6 py-3 text-right">Amount</th>
+               <th className="w-24"></th>
             </tr>
           </thead>
           <tbody className="divide-y divide-neutral-50/10 text-neutral-200">
@@ -71,6 +73,11 @@ export default function Transactions() {
                   </span>
                 </td>
                 <td className="px-6 py-4 text-right">{tx.amount}</td>
+                <td className="px-4 py-4 text-right w-24">
+  <button className="p-2 rounded-md hover:bg-white/10 transition">
+    <FileText className="w-4 h-4 text-neutral-400 hover:text-white transition" />
+  </button>
+</td>
               </tr>
             ))}
           </tbody>
