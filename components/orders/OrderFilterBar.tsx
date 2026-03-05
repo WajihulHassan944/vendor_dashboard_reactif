@@ -37,7 +37,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="flex justify-between items-center gap-3 px-3 py-2 bg-neutral-800 rounded-md border border-neutral-50/20 w-38"
+        className="flex justify-between items-center gap-3 px-3 py-2 bg-neutral-800 rounded-md border border-neutral-50/20 w-fit"
       >
         <div className="flex items-center gap-2">
           <div className="flex items-center justify-center">{icon}</div>

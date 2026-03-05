@@ -138,20 +138,20 @@ const Page: React.FC = () => {
 
                 {/* Installation Note */}
            
-<div className="bg-amber-400/10 border border-amber-400/30 rounded-xl p-4 flex gap-2">
+<div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-xl p-4 flex gap-2">
   
   {/* Icon */}
   <div className="flex items-start">
-    <Info className="w-4 h-4 text-amber-300 mt-[2px] " />
+    <Info className="w-4 h-4 text-[#92400E] mt-[2px] " />
   </div>
 
 
   {/* Content */}
   <div className="flex flex-col gap-1">
-    <div className="text-sm font-semibold text-amber-300">
+    <div className="text-sm font-semibold text-[#92400E]">
       Installation Note
     </div>
-    <div className="text-sm text-amber-200/80 leading-relaxed">
+    <div className="text-sm text-[#702d04] leading-relaxed font-[500]">
       Client requested removal of rear badges prior to install.
       Badges to be saved.
     </div>

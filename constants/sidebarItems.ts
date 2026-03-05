@@ -5,6 +5,8 @@ import {
   CreditCard,
   MessageCircle,
   Bell,
+  Briefcase,
+  User,
   LucideIcon,
 } from "lucide-react";
 
@@ -17,7 +19,9 @@ export interface MenuItem {
 export const menuItems: MenuItem[] = [
   { title: "Dashboard", icon: LayoutGrid, href: "/" },
   { title: "Assigned Orders", icon: FileText, href: "/orders" },
-  { title: "Earnings", icon: CreditCard, href: "/earnings" }, // CreditCard fits earnings/payments
-  { title: "Message to Admin", icon: MessageCircle, href: "/support" }, // More intuitive chat/message icon
+  { title: "Earnings", icon: CreditCard, href: "/earnings" },
+  { title: "Message to Admin", icon: MessageCircle, href: "/support" },
   { title: "Notifications", icon: Bell, href: "/notifications" },
+  { title: "Services", icon: Briefcase, href: "/services" },
+  { title: "Profile", icon: User, href: "/profile" },
 ];
