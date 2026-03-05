@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
+import { User, Briefcase } from "lucide-react";
 
 const page = () => {
   return (
@@ -38,6 +39,7 @@ const page = () => {
           {/* Personal Info */}
           <div>
             <div className="bg-[#1E293B] rounded-md px-4 py-3 mb-6 text-sm font-semibold text-purple-400 flex items-center gap-2">
+              <User size={16} />
               Personal Information
             </div>
 
@@ -78,6 +80,7 @@ const page = () => {
           <div>
 
             <div className="bg-[#1E293B] rounded-md px-4 py-3 mb-6 text-sm font-semibold text-purple-400 flex items-center gap-2">
+              <Briefcase size={16} />
               Business Information
             </div>
 
