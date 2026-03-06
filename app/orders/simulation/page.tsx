@@ -13,7 +13,7 @@ export type Mode =
   | "ready_to_ship";
 
 const Page = () => {
-  const [mode, setMode] = useState<Mode>("inprogress");
+  const [mode, setMode] = useState<Mode>("pending");
 
   return (
     <div className="min-h-screen text-white font-['HK_Grotesk']">

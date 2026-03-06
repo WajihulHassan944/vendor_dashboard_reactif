@@ -41,7 +41,7 @@ const OrderStepper = ({ mode }: Props) => {
                       : "bg-[#252a3b] border-white/20"
                   }`}
                 >
-                  {completed && <FiCheck />}
+                  <FiCheck />
                 </div>
 
                 <span

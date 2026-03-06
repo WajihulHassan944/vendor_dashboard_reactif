@@ -137,9 +137,14 @@ const AssignedOrders = () => {
                   Due: {order.dueDate}
                 </span>
 
-                <button className="px-3 py-1.5 bg-indigo-600 text-white text-xs rounded-md hover:bg-indigo-500 transition">
-                  View
-                </button>
+               <button
+  onClick={() =>
+    router.push(order.status === "pending" ? "/orders/simulation" : "/orders/details")
+  }
+  className="px-3 py-1.5 bg-indigo-600 text-white text-xs rounded-md hover:bg-indigo-500 transition"
+>
+  View
+</button>
               </div>
             </div>
           );
@@ -184,9 +189,14 @@ const AssignedOrders = () => {
                     </td>
                     <td className="px-6 py-4">{order.dueDate}</td>
                     <td className="px-6 py-4">
-                      <button onClick={()=>router.push('/orders/details')} className="cursor-pointer px-3 py-1.5 bg-indigo-600 text-white text-xs rounded-md hover:bg-indigo-500 transition">
-                        View Details
-                      </button>
+                     <button
+  onClick={() =>
+    router.push(order.status === "pending" ? "/orders/simulation" : "/orders/details")
+  }
+  className="cursor-pointer px-3 py-1.5 bg-indigo-600 text-white text-xs rounded-md hover:bg-indigo-500 transition"
+>
+  View Details
+</button>
                     </td>
                   </tr>
                 );
