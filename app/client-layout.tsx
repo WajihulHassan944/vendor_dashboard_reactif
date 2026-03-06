@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/components/navbar/navbar";
 import Sidebar from "@/components/sidebar";
 import Container from "@/components/container";
+import { Toaster } from "sonner";
 
 export default function ClientLayout({
   children,
@@ -16,7 +17,7 @@ export default function ClientLayout({
   const pathname = usePathname();
 
   // Pages where navbar, sidebar, and padding should be removed
-  const hideLayout = ["/register", "/login", "/forgot-password"].includes(pathname);
+  const hideLayout = ["/verify-otp","/register/enter-otp","/register", "/login", "/forgot-password"].includes(pathname);
 
   // Example: support page padding
   const isSupportPage = pathname === "/support";
@@ -26,7 +27,7 @@ export default function ClientLayout({
 
   return (
     <div className="flex min-h-screen bg-[#222]">
-
+<Toaster position="top-right" richColors />
       {/* Sidebar */}
       {!hideLayout && (
         <Sidebar

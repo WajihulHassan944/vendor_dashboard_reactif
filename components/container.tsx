@@ -15,7 +15,7 @@ const Container: React.FC<ContainerProps> = ({
   const pathname = usePathname();
 
   // Pages where padding should be removed
-  const noPaddingPages = ["/register", "/login", "/forgot-password"];
+  const noPaddingPages = ["/verify-otp","/register/enter-otp","/register", "/login", "/forgot-password"];
   const hidePadding = pathname.startsWith("/support") || noPaddingPages.includes(pathname);
 
   return (

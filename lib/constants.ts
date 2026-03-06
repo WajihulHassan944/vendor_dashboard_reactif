@@ -1,4 +1,4 @@
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "/api"
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://reactif.dcodax.net/api"
 
 export const ROUTES = {
   HOME: "/",

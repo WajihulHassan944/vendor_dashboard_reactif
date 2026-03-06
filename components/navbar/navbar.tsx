@@ -4,7 +4,7 @@ import * as React from "react";
 import { Bell, Menu, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { usePathname } from "next/navigation"; // <-- Import this
+import { usePathname } from "next/navigation";
 
 interface NavbarProps {
   isSidebarOpen: boolean;
