@@ -69,7 +69,7 @@ export default function Navbar({ isSidebarOpen, setSidebarOpen }: NavbarProps) {
           </button>
 
           {/* Notification */}
-          <div className="relative cursor-pointer p-2 rounded-full border border-indigo-400 bg-white/5 hover:bg-indigo-400 transition">
+          <div className="relative cursor-pointer p-2 rounded-full border border-indigo-400 bg-white/5 hover:bg-indigo-100 transition">
             <Bell size={20} className="text-indigo-400" />
             <span className="absolute top-[7px] right-2 w-2 h-2 bg-indigo-400 rounded-full border border-black"></span>
           </div>
