@@ -73,7 +73,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     localStorage.setItem("current_user", JSON.stringify(userObject))
 
     // Success toast
-    toast.success(userObject.isVerified ? "Login Successful!" : "Account created, please verify OTP!")
+    toast.success(userObject.isVerified ? "Login Successful!" : "Please verify OTP!")
 
     // Redirect
     if (!userObject.isVerified) router.push("/register/enter-otp")

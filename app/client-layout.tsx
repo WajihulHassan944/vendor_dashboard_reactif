@@ -7,12 +7,14 @@ import Navbar from "@/components/navbar/navbar";
 import Sidebar from "@/components/sidebar";
 import Container from "@/components/container";
 import { Toaster } from "sonner";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function ClientLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+   useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
 

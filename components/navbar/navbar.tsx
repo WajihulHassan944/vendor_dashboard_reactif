@@ -3,8 +3,8 @@
 import * as React from "react";
 import { Bell, Menu, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { FiLogOut } from "react-icons/fi";
 
 interface NavbarProps {
   isSidebarOpen: boolean;
@@ -32,8 +32,33 @@ const SearchBox = () => (
 
 export default function Navbar({ isSidebarOpen, setSidebarOpen }: NavbarProps) {
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
-
+  const dropdownRef = React.useRef<HTMLDivElement | null>(null);
+  const router = useRouter();
+const user =
+  typeof window !== "undefined"
+    ? JSON.parse(localStorage.getItem("current_user") || "{}")
+    : {};
   const pathname = usePathname(); // <-- Get current path
+ const handleLogout = () => {
+    localStorage.removeItem("sessionToken");
+    localStorage.removeItem("current_user");
+    router.push("/login");
+  };
+React.useEffect(() => {
+  function handleClickOutside(event: MouseEvent) {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      setDropdownOpen(false);
+    }
+  }
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
+
+
 
   return (
     <nav className="w-full z-40 backdrop-blur-xl border-b border-indigo-400">
@@ -79,23 +104,29 @@ export default function Navbar({ isSidebarOpen, setSidebarOpen }: NavbarProps) {
             className="cursor-pointer"
             onClick={() => setDropdownOpen(!dropdownOpen)}
           >
-            <Avatar className="h-9 w-9 md:h-10 md:w-10">
-              <AvatarImage src="https://github.com/shadcn.png" alt="User" />
-              <AvatarFallback>UF</AvatarFallback>
-            </Avatar>
+          <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-lg font-bold text-white">
+  {user?.name?.charAt(0) || "A"}
+</div>
           </div>
 
           {/* Mobile Dropdown */}
           {dropdownOpen && (
-            <div className="absolute right-4 top-[75px] md:hidden w-56 bg-neutral-900 border border-indigo-400 rounded-xl shadow-2xl p-4 flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div ref={dropdownRef} className="absolute right-4 top-[75px]  w-56 bg-neutral-900 border border-indigo-400 rounded-xl shadow-2xl p-4 flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200">
               <Button className="rounded-full bg-white text-black hover:bg-gray-200 font-medium h-10 w-full">
                 Home Page
               </Button>
 
-              <div className="flex items-center gap-3 text-white cursor-pointer hover:bg-white/5 p-2 rounded-lg transition">
+              <div className="md:hidden flex items-center gap-3 text-white cursor-pointer hover:bg-white/5 p-2 rounded-lg transition">
                 <Bell size={18} />
                 <span className="text-sm">Notifications</span>
               </div>
+               <button
+                      onClick={handleLogout}
+                      className="rounded-full flex items-center gap-3 w-full px-4 py-2 hover:bg-red-50 text-red-600"
+                    >
+                      <FiLogOut size={16} />
+                      Logout
+                    </button>
             </div>
           )}
 
