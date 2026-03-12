@@ -57,4 +57,22 @@ export const transactions = [
     statusColor: "bg-emerald-100 text-emerald-800",
     amount: "$1,850.00",
   },
+  {
+    date: "Oct 31, 2025",
+    description: "Storefront Signage",
+    vendor: "Burger King - Downtown",
+    ref: "ORD-1102-KL",
+    status: "Paid",
+    statusColor: "bg-emerald-100 text-emerald-800",
+    amount: "$1,850.00",
+  },
+  {
+    date: "Oct 31, 2025",
+    description: "Storefront Signage",
+    vendor: "Burger King - Downtown",
+    ref: "ORD-1102-KL",
+    status: "Paid",
+    statusColor: "bg-emerald-100 text-emerald-800",
+    amount: "$1,850.00",
+  },
 ];

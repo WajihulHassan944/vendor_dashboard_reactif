@@ -3,14 +3,20 @@
 import { earningCards } from "@/constants/earnings";
 import EarningStatCard from "../cards/EarningStatCard";
 
-export default function EarningStats() {
+interface Props {
+  loading?: boolean;
+}
+
+export default function EarningStats({ loading = false }: Props) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
       {earningCards.map((card) => {
         const Icon = card.icon;
+
         return (
           <EarningStatCard
             key={card.title}
+            loading={loading}
             title={card.title}
             value={card.value}
             color={card.color}

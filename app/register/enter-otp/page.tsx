@@ -4,11 +4,9 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 
 import { API_BASE_URL } from "@/lib/constants"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
 
 import Link from "next/link"
+import { toast } from "sonner"
 
 const OTPForm = () => {
   const router = useRouter()
@@ -134,7 +132,8 @@ const OTPForm = () => {
         localStorage.setItem("current_user", JSON.stringify(parsedUser))
       }
 
-      setSuccess("Account verified successfully!")
+      setSuccess("Verified successfully!")
+      toast.success("Verified successfully!");
 
       /* --------------------------
          Navigate to Home (C9)
@@ -176,7 +175,7 @@ const handleResend = async () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, user_type:"designer" }),
       }
     )
 
@@ -191,6 +190,7 @@ const handleResend = async () => {
 
     // Success
     setSuccess("A new OTP has been sent to your email.")
+    toast.success('A new OTP has been sent to your email.');
     setCountdown(60)
     setCanResend(false)
 

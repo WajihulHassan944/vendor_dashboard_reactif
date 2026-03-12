@@ -5,6 +5,7 @@ import { Bell, Menu, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import { FiLogOut } from "react-icons/fi";
+import Link from "next/link";
 
 interface NavbarProps {
   isSidebarOpen: boolean;
@@ -94,10 +95,10 @@ React.useEffect(() => {
           </button>
 
           {/* Notification */}
-          <div className="relative cursor-pointer p-2 rounded-full border border-indigo-400 bg-white/5 hover:bg-indigo-100 transition">
+          <Link href="/notifications" className="relative cursor-pointer p-2 rounded-full border border-indigo-400 bg-white/5 hover:bg-indigo-100 transition">
             <Bell size={20} className="text-indigo-400" />
             <span className="absolute top-[7px] right-2 w-2 h-2 bg-indigo-400 rounded-full border border-black"></span>
-          </div>
+          </Link>
 
           {/* Avatar */}
           <div
@@ -105,7 +106,7 @@ React.useEffect(() => {
             onClick={() => setDropdownOpen(!dropdownOpen)}
           >
           <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-lg font-bold text-white">
-  {user?.name?.charAt(0) || "A"}
+  {user?.displayName?.charAt(0) || "A"}
 </div>
           </div>
 
@@ -116,10 +117,10 @@ React.useEffect(() => {
                 Home Page
               </Button>
 
-              <div className="md:hidden flex items-center gap-3 text-white cursor-pointer hover:bg-white/5 p-2 rounded-lg transition">
+              <Link href="/notifications" className="md:hidden flex items-center gap-3 text-white cursor-pointer hover:bg-white/5 p-2 rounded-lg transition">
                 <Bell size={18} />
                 <span className="text-sm">Notifications</span>
-              </div>
+              </Link>
                <button
                       onClick={handleLogout}
                       className="rounded-full flex items-center gap-3 w-full px-4 py-2 hover:bg-red-50 text-red-600"

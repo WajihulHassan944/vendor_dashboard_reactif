@@ -9,6 +9,7 @@ interface EarningStatCardItemProps {
   percent: string;
   percentColor: string;
   Icon: React.ComponentType<{ size?: number; className?: string }>;
+  loading?: boolean;
 }
 
 const colorStyles = {
@@ -36,6 +37,7 @@ export default function EarningStatCard({
   percent,
   percentColor,
   Icon,
+  loading = false,
 }: EarningStatCardItemProps) {
   const styles = colorStyles[color];
 
@@ -54,20 +56,35 @@ export default function EarningStatCard({
         gap-4
       `}
     >
-      <div className="flex justify-between items-start">
-        <div>
-          <p className="text-sm font-medium text-neutral-400">{title}</p>
-          <p className="text-2xl font-bold text-white mt-1">{value}</p>
-        </div>
+      {loading ? (
+        <>
+          <div className="flex justify-between items-start animate-pulse">
+            <div className="space-y-2">
+              <div className="h-3 w-24 bg-neutral-700 rounded"></div>
+              <div className="h-6 w-28 bg-neutral-700 rounded"></div>
+            </div>
 
-        <div className={`p-2 rounded-lg ${styles.bgLight}`}>
-          <Icon size={20} className={styles.textDark} />
-        </div>
-      </div>
+            <div className="w-10 h-10 bg-neutral-700 rounded-lg"></div>
+          </div>
 
-      <p className={`text-xs font-medium ${percentColor}`}>
-        {percent}
-      </p>
+          <div className="h-3 w-32 bg-neutral-700 rounded animate-pulse"></div>
+        </>
+      ) : (
+        <>
+          <div className="flex justify-between items-start">
+            <div>
+              <p className="text-sm font-medium text-neutral-400">{title}</p>
+              <p className="text-2xl font-bold text-white mt-1">{value}</p>
+            </div>
+
+            <div className={`p-2 rounded-lg ${styles.bgLight}`}>
+              <Icon size={20} className={styles.textDark} />
+            </div>
+          </div>
+
+          <p className={`text-xs font-medium ${percentColor}`}>{percent}</p>
+        </>
+      )}
     </div>
   );
 }

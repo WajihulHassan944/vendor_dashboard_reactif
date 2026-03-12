@@ -5,7 +5,7 @@ import { onest } from "@/lib/fonts";
 import ClientLayout from "./client-layout";
 
 export const metadata: Metadata = {
-  title: "Super Admin",
+  title: "Vendor",
 };
 
 export default function RootLayout({
