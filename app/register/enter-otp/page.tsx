@@ -98,6 +98,7 @@ const OTPForm = () => {
           body: JSON.stringify({
             email,
             otp,
+            user_type:"designer"
           }),
         }
       )
