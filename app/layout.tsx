@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${onest.className} relative min-h-screen  bg-gradient-to-br from-[#0f1115] via-[#151821] to-[#1b2230] `}
+        className={`${onest.className} w-full relative min-h-screen  bg-[#222] `}
       >
         {/* Fullscreen blurred gradient background */}
         <div className="absolute w-full h-full">

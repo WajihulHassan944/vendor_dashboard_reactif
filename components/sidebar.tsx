@@ -19,15 +19,14 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
     <>
       {/* Sidebar */}
       <aside
-        style={{ background: "transparent" }}
-        className={cn(
-          "flex flex-col w-[287px] transition-transform duration-300 z-50 border-r border-indigo-400",
-          {
-            "fixed top-0 left-0 md:relative md:translate-x-0": true,
-            "-translate-x-full": !isOpen,
-            "translate-x-0": isOpen,
-          }
-        )}
+       className={cn(
+    "flex flex-col w-[287px] transition-transform duration-300 z-50 border-r border-indigo-400 bg-[#222] md:bg-transparent h-full md:h-auto",
+    {
+      "fixed top-0 left-0 md:relative md:translate-x-0": true,
+      "-translate-x-full": !isOpen,
+      "translate-x-0": isOpen,
+    }
+  )}
       >
         {/* Logo */}
         <div className="flex items-center gap-[20px] px-[24px] pt-[20px] pb-[24px]">

@@ -70,7 +70,7 @@ function StatCard({
 
 export default function DashboardStats() {
   return (
-    <div className="w-full px-4 md:px-0">
+    <div className="w-full ">
       <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
         
         <StatCard

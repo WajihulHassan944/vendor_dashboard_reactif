@@ -17,7 +17,7 @@ export default function EarningsPage() {
           />
 
  
-  <Link href="/services/add" className="h-10 px-4 rounded-md bg-indigo-600 text-white text-sm font-medium flex items-center gap-2 hover:bg-indigo-500 transition">
+  <Link href="/services/add" className="text-center w-fit h-10 px-4 rounded-md bg-indigo-600 text-white text-sm font-medium flex items-center gap-2 hover:bg-indigo-500 transition">
     <Plus className="w-4 h-4 text-white" />
     Add Service
   </Link>

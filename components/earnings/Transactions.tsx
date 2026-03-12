@@ -99,12 +99,12 @@ export default function Transactions({ loading = false }: Props) {
             placeholder="Search ref..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="px-4 py-2 rounded-lg bg-white text-sm outline-none w-full sm:w-auto"
+           className="h-10 px-4 rounded-lg bg-white text-sm outline-none w-full sm:w-[180px]"
           />
 
           {/* Shadcn Select */}
           <Select value={status} onValueChange={setStatus}>
-            <SelectTrigger className="w-[150px] bg-white text-sm">
+           <SelectTrigger className="h-10 w-full sm:w-[150px] bg-white text-sm">
               <SelectValue placeholder="Status" />
             </SelectTrigger>
 

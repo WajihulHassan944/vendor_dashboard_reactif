@@ -91,7 +91,7 @@ React.useEffect(() => {
             onClick={() => setSidebarOpen(!isSidebarOpen)}
             className="md:hidden p-2 rounded-lg bg-white/5 border border-indigo-400 hover:bg-indigo-400 transition"
           >
-            {isSidebarOpen ? <X size={20} /> : <Menu size={20} color="white" />}
+            {isSidebarOpen ? <X color="white" size={20} /> : <Menu size={20} color="white" />}
           </button>
 
           {/* Notification */}
@@ -113,9 +113,9 @@ React.useEffect(() => {
           {/* Mobile Dropdown */}
           {dropdownOpen && (
             <div ref={dropdownRef} className="absolute right-4 top-[75px]  w-56 bg-neutral-900 border border-indigo-400 rounded-xl shadow-2xl p-4 flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200">
-              <Button className="rounded-full bg-white text-black hover:bg-gray-200 font-medium h-10 w-full">
+              <Link href="https://saas-restaurant-admin-dashboard.vercel.app/" className="text-center rounded-full bg-white text-black hover:bg-gray-200 font-medium  w-full py-2" >
                 Home Page
-              </Button>
+              </Link>
 
               <Link href="/notifications" className="md:hidden flex items-center gap-3 text-white cursor-pointer hover:bg-white/5 p-2 rounded-lg transition">
                 <Bell size={18} />

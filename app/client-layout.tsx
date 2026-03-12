@@ -28,7 +28,7 @@ export default function ClientLayout({
   const contentPadding = !hideLayout && !isSupportPage ? "px-0 md:px-6 py-6" : "";
 
   return (
-    <div className="flex min-h-screen bg-[#222]">
+    <div className="flex min-h-screen ">
 <Toaster position="top-right" richColors />
       {/* Sidebar */}
       {!hideLayout && (
